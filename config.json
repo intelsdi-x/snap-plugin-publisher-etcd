@@ -1,0 +1,13 @@
+{
+    "control": {
+        "plugins": {
+            "publisher": {
+                "etcd": {
+                    "all": {
+                        "etcd_host": "http://localhost:4001"
+                    }
+                }
+            }
+        }
+    }
+}

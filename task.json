@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "schedule": {
+        "type": "simple",
+        "interval": "10s"
+    },
+    "workflow": {
+        "collect": {
+            "metrics": {
+                "/intel/psutil/load/load1": {},
+                "/intel/psutil/load/load5": {},
+                "/intel/psutil/load/load15": {},
+                "/intel/psutil/vm/available": {},
+                "/intel/psutil/vm/free": {},
+                "/intel/psutil/vm/used": {}
+            },
+            "config": {},
+            "process": null,
+            "publish": [
+                {
+                    "plugin_name": "etcd",                            
+                    "config": {}
+                }
+            ]  
+        }
+    }
+}
