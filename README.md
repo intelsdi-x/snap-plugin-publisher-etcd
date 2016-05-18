@@ -1,4 +1,4 @@
-# snap publisher plugin - riemann
+# snap publisher plugin - etcd
 
 Allows publishing of data to [etcd](https://coreos.com/etcd/)
 
@@ -25,8 +25,9 @@ All OSs currently supported by snap:
 * Darwin/amd64
 
 ### Installation
-#### Download riemann plugin binary:
+#### Download etcd plugin binary:
 You can get the pre-built binaries for your OS and architecture at snap's [GitHub Releases](https://github.com/intelsdi-x/snap/releases) page.
+Download the last etcd release on their [github release page](https://github.com/coreos/etcd/releases/).
 
 #### To build the plugin binary:
 Fork https://github.com/intelsdi-x/snap-plugin-publisher-etcd
