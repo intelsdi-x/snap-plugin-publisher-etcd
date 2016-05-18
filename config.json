@@ -4,7 +4,7 @@
             "publisher": {
                 "etcd": {
                     "all": {
-                        "etcd_host": "http://localhost:4001"
+                        "etcd_host": "http://127.0.0.1:4001"
                     }
                 }
             }
