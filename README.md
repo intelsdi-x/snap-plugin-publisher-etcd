@@ -1,4 +1,4 @@
-# snap publisher plugin - riemann
+# snap publisher plugin - etcd
 
 Allows publishing of data to [etcd](https://coreos.com/etcd/)
 
