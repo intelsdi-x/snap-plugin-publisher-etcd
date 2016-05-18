@@ -9,6 +9,21 @@
 			"Rev": "55eb11d21d2a31a3cc93838241d04800f52e823d"
 		},
 		{
+			"ImportPath": "github.com/coreos/etcd/client",
+			"Comment": "v3.0.0-beta.0-147-g90498b3",
+			"Rev": "90498b37567be0abadea826ae1c768dfe300fd4a"
+		},
+		{
+			"ImportPath": "github.com/coreos/etcd/pkg/pathutil",
+			"Comment": "v3.0.0-beta.0-147-g90498b3",
+			"Rev": "90498b37567be0abadea826ae1c768dfe300fd4a"
+		},
+		{
+			"ImportPath": "github.com/coreos/etcd/pkg/types",
+			"Comment": "v3.0.0-beta.0-147-g90498b3",
+			"Rev": "90498b37567be0abadea826ae1c768dfe300fd4a"
+		},
+		{
 			"ImportPath": "github.com/intelsdi-x/snap/control/plugin",
 			"Comment": "v0.13.0-beta-87-g914ba90",
 			"Rev": "914ba90203753610bd94562ddd324bfb135f2caa"
@@ -67,6 +82,14 @@
 			"ImportPath": "github.com/robfig/cron",
 			"Comment": "v1-7-g32d9c27",
 			"Rev": "32d9c273155a0506d27cf73dd1246e86a470997e"
+		},
+		{
+			"ImportPath": "github.com/ugorji/go/codec",
+			"Rev": "a396ed22fc049df733440d90efe17475e3929ccb"
+		},
+		{
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "3b993948b6f0e651ffb58ba135d8538a68b1cddf"
 		},
 		{
 			"ImportPath": "gopkg.in/yaml.v2",
