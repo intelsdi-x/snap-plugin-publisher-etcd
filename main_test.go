@@ -1,8 +1,10 @@
+// +build unit
+
 /*
 http://www.apache.org/licenses/LICENSE-2.0.txt
 
 
-Copyright 2015 Intel Corporation
+Copyright 2016 Intel Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,13 +18,18 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+package main
 
-package encoding
+import (
+	"os"
+	"testing"
 
-import "github.com/intelsdi-x/snap/control/plugin/encrypter"
+	. "github.com/smartystreets/goconvey/convey"
+)
 
-type Encoder interface {
-	Encode(interface{}) ([]byte, error)
-	Decode([]byte, interface{}) error
-	SetEncrypter(*encrypter.Encrypter)
+func TestMain(t *testing.T) {
+	Convey("ensure plugin loads and responds", t, func() {
+		os.Args = []string{"", "{\"NoDaemon\": true}"}
+		So(func() { main() }, ShouldNotPanic)
+	})
 }
