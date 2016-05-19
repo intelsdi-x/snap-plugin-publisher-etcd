@@ -96,16 +96,21 @@ func (e *Etcd) Publish(contentType string, content []byte, config map[string]cty
 		return errBadHost
 	}
 
-	return e.saveMetrics(metrics, host.Value)
+	c, err := NewEtcdClient(host.Value)
+	if err != nil {
+		return err
+	}
+
+	return e.saveMetrics(metrics, c)
 }
 
-func (e *Etcd) saveMetrics(mts []plugin.MetricType, host string) error {
+func (e *Etcd) saveMetrics(mts []plugin.MetricType, c *etcdClient) error {
 
 	errs := []string{}
 	var err error
 
 	for _, m := range mts {
-		err = worker(host, m)
+		err = c.worker(m)
 		if err != nil {
 			errs = append(errs, err.Error())
 		}
