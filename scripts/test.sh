@@ -87,12 +87,13 @@ elif [[ $TEST_SUITE == "integration" ]]; then
         echo "env var SNAP_PLUGIN_SOURCE not set, should be location of snap-plugin-publisher-etcd"
         exit 1
 	fi
-	export SNAP_ETCD_PUBLIC_IP="127.0.0.1"
+	export SNAP_ETCD_PUBLIC_IP="192.168.99.100"
 	export SNAP_ETCD_PORT="5001"
-	echo "command: docker run -d -p 8001:8001 -p 5001:5001 --name=etcd quay.io/coreos/etcd:v0.4.6 -peer-addr ${SNAP_ETCD_PUBLIC_IP}:8001 -addr ${SNAP_ETCD_PUBLIC_IP}:5001"
-	docker run -d -p 8001:8001 -p 5001:5001 --name=etcd quay.io/coreos/etcd:v0.4.6 -peer-addr ${SNAP_ETCD_PUBLIC_IP}:8001 -addr ${SNAP_ETCD_PUBLIC_IP}:5001
+	echo "command: docker run -d -p 8001:8001 -p 5001:5001 --name=etcd quay.io/coreos/etcd:v0.4.6 -peer-addr ${SNAP_ETCD_PUBLIC_IP}:8001 -addr ${SNAP_ETCD_PUBLIC_IP}:$SNAP_ETCD_PORT"
+	docker run -d -p 8001:8001 -p $SNAP_ETCD_PORT:$SNAP_ETCD_PORT --name=etcd quay.io/coreos/etcd:v0.4.6 -peer-addr ${SNAP_ETCD_PUBLIC_IP}:8001 -addr ${SNAP_ETCD_PUBLIC_IP}:$SNAP_ETCD_PORT
 	sleep 5
 	echo "command: SNAP_ETCD_HOST=\"$SNAP_ETCD_PUBLIC_IP:$SNAP_ETCD_PORT\" go test -v --tags=integration ./..."
 	# if you're using docker-machine, 127.0.0.1 needs to be replaced with your docker-machine ip
 	SNAP_ETCD_HOST="http://$SNAP_ETCD_PUBLIC_IP:$SNAP_ETCD_PORT" go test -v --tags=integration ./... 
+	docker kill etcd && docker rm etcd
 fi
