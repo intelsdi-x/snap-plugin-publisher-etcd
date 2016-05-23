@@ -14,7 +14,7 @@ env:
   matrix:
     - TEST=small
     - TEST=medium
-    - TEST=large
+#    - TEST=large
 install:
 - export TMPDIR=$HOME/tmp
 - mkdir -p $TMPDIR
