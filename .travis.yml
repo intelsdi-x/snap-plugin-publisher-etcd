@@ -12,8 +12,9 @@ env:
   global:
     - SNAP_PLUGIN_SOURCE=/home/travis/gopath/src/github.com/intelsdi-x/snap-plugin-publisher-etcd
   matrix:
-    - TEST=unit
-    - TEST=integration
+    - TEST=small
+    - TEST=medium
+    - TEST=large
 install:
 - export TMPDIR=$HOME/tmp
 - mkdir -p $TMPDIR

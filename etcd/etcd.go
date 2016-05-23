@@ -38,9 +38,8 @@ const (
 )
 
 var (
-	errNoHost    = errors.New("setting metric types requires an etcd host")
-	errBadHost   = errors.New("failed to parse given etcd_host")
-	errReqFailed = errors.New("request to etcd api failed")
+	errNoHost  = errors.New("setting metric types requires an etcd host")
+	errBadHost = errors.New("failed to parse given etcd_host")
 )
 
 type Etcd struct{}
