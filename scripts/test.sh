@@ -10,7 +10,7 @@
 # Capture what test we should run
 TEST_SUITE=$1
 
-if [[ $TEST_SUITE == "unit" ]]; then
+if [[ $TEST_SUITE == "small" ]]; then
 	go get github.com/axw/gocov/gocov
 	go get github.com/mattn/goveralls
 	go get -u github.com/golang/lint/golint
@@ -53,7 +53,7 @@ if [[ $TEST_SUITE == "unit" ]]; then
 	for dir in $(find . -maxdepth 10 -not -path './.git*' -not -path '*/_*' -not -path './examples/*' -not -path './scripts/*' -not -path './build/*' -not -path './Godeps/*' -type d);
 	do
 		if ls $dir/*.go &> /dev/null; then
-	    		go test --tags=unit -covermode=count -coverprofile=$dir/profile.tmp $dir
+	    		go test --tags=small -covermode=count -coverprofile=$dir/profile.tmp $dir
 	    		if [ -f $dir/profile.tmp ]
 	    		then
 	        		cat $dir/profile.tmp | tail -n +2 >> profile.cov
@@ -81,7 +81,7 @@ if [[ $TEST_SUITE == "unit" ]]; then
 	#         sleep 30
 	#     done
 	# fi
-elif [[ $TEST_SUITE == "integration" ]]; then
+elif [[ $TEST_SUITE == "medium" ]]; then
 	cd $SNAP_PLUGIN_SOURCE
 	if [[ $SNAP_PLUGIN_SOURCE == "" ]]; then
         echo "env var SNAP_PLUGIN_SOURCE not set, should be location of snap-plugin-publisher-etcd"
@@ -92,8 +92,8 @@ elif [[ $TEST_SUITE == "integration" ]]; then
 	echo "command: docker run -d -p 8001:8001 -p 5001:5001 --name=etcd quay.io/coreos/etcd:v0.4.6 -peer-addr ${SNAP_ETCD_PUBLIC_IP}:8001 -addr ${SNAP_ETCD_PUBLIC_IP}:$SNAP_ETCD_PORT"
 	docker run -d -p 8001:8001 -p $SNAP_ETCD_PORT:$SNAP_ETCD_PORT --name=etcd quay.io/coreos/etcd:v0.4.6 -peer-addr ${SNAP_ETCD_PUBLIC_IP}:8001 -addr ${SNAP_ETCD_PUBLIC_IP}:$SNAP_ETCD_PORT
 	sleep 5
-	echo "command: SNAP_ETCD_HOST=\"$SNAP_ETCD_PUBLIC_IP:$SNAP_ETCD_PORT\" go test -v --tags=integration ./..."
+	echo "command: SNAP_ETCD_HOST=\"$SNAP_ETCD_PUBLIC_IP:$SNAP_ETCD_PORT\" go test -v --tags=medium ./..."
 	# if you're using docker-machine, 127.0.0.1 needs to be replaced with your docker-machine ip
-	SNAP_ETCD_HOST="http://$SNAP_ETCD_PUBLIC_IP:$SNAP_ETCD_PORT" go test -v --tags=integration ./... 
+	SNAP_ETCD_HOST="http://$SNAP_ETCD_PUBLIC_IP:$SNAP_ETCD_PORT" go test -v --tags=medium ./... 
 	docker kill etcd && docker rm etcd
 fi
