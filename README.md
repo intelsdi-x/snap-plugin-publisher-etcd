@@ -3,9 +3,7 @@
 
 # snap publisher plugin - etcd
 
-Allows publishing of data to [etcd](https://coreos.com/etcd/)
-
-It's used in the [snap framework](http://github.com:intelsdi-x/snap).
+Allows publishing of data to [etcd](https://coreos.com/etcd/) from the [Snap framework](http://github.com:intelsdi-x/snap).
 
 1. [Getting Started](#getting-started)
   * [System Requirements](#system-requirements)
@@ -20,6 +18,7 @@ It's used in the [snap framework](http://github.com:intelsdi-x/snap).
 
 ## Getting Started
 ### System Requirements
+* A running instance of etcd ([release page](https://github.com/coreos/etcd/releases/))
 * [golang 1.5+](https://golang.org/dl/) (needed only for building)
 
 ### Operating systems
@@ -30,7 +29,6 @@ All OSs currently supported by snap:
 ### Installation
 #### Download etcd plugin binary:
 You can get the pre-built binaries for your OS and architecture at snap's [GitHub Releases](https://github.com/intelsdi-x/snap/releases) page.
-Download the last etcd release on their [github release page](https://github.com/coreos/etcd/releases/).
 
 #### To build the plugin binary:
 Fork https://github.com/intelsdi-x/snap-plugin-publisher-etcd
@@ -47,21 +45,19 @@ $ make
 This builds the plugin in `/build/rootfs/`
 
 ### Configuration and Usage
-* Set up the [snap framework](https://github.com/intelsdi-x/snap/blob/master/README.md#getting-started)
-* Ensure `$SNAP_PATH` is exported  
-`export SNAP_PATH=$GOPATH/src/github.com/intelsdi-x/snap/build`
+* Set up the [Snap framework](https://github.com/intelsdi-x/snap/blob/master/README.md#getting-started)
 
 ## Documentation
 There are a number of other resources you can review to learn to use this plugin:
 
 * [etcd documentation](https://coreos.com/etcd/docs/latest/faq.html) 
-* [etcd github](https://github.com/coreos/etcd)
+* [etcd GitHub](https://github.com/coreos/etcd)
 
 ### Roadmap
 There isn't a current roadmap for this plugin, but it is in active development. As we launch this plugin, we do not have any outstanding requirements for the next release. If you have a feature request, please add it as an [issue](https://github.com/intelsdi-x/snap-plugin-publisher-etcd/issues/new) and/or submit a [pull request](https://github.com/intelsdi-x/snap-plugin-publisher-etcd/pulls).
 
 ## Community Support
-This repository is one of **many** plugins in **snap**, a powerful telemetry framework. See the full project at http://github.com/intelsdi-x/snap To reach out to other users, head to the [main framework](https://github.com/intelsdi-x/snap#community-support)
+This repository is one of **many** plugins in **Snap**, a powerful telemetry framework. See the full project at http://github.com/intelsdi-x/snap To reach out to other users, head to the [main framework](https://github.com/intelsdi-x/snap#community-support)
 
 ## Contributing
 We love contributions!
