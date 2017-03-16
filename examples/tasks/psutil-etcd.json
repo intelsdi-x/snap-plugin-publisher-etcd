@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "schedule": {
+    "type": "simple",
+    "interval": "1s"
+  },
+  "workflow": {
+    "collect": {
+      "metrics": {
+        "/intel/psutil/cpu/cpu-total/idle": {},
+        "/intel/psutil/cpu/cpu-total/iowait": {}
+      },
+      "publish": [
+        {
+          "plugin_name": "etcd",
+          "config": {
+            "etcd_host": "${ETCD_HOST}"
+          }
+        }
+      ]
+    }
+  }
+}

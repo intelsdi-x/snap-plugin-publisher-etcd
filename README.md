@@ -10,6 +10,7 @@ Allows publishing of data to [etcd](https://coreos.com/etcd/) from the [Snap fra
   * [Installation](#installation)
   * [Configuration and Usage](configuration-and-usage)
 2. [Documentation](#documentation)
+  * [Examples](#examples)
   * [Roadmap](#roadmap)
 3. [Community Support](#community-support)
 4. [Contributing](#contributing)
@@ -46,12 +47,47 @@ This builds the plugin in `/build/rootfs/`
 
 ### Configuration and Usage
 * Set up the [Snap framework](https://github.com/intelsdi-x/snap/blob/master/README.md#getting-started)
+* Set Snap Global Global Config field `etcd_host` to proper etcd host string (e.g. `http://localhost:2379`)
 
 ## Documentation
-There are a number of other resources you can review to learn to use this plugin:
 
-* [etcd documentation](https://coreos.com/etcd/docs/latest/faq.html) 
-* [etcd GitHub](https://github.com/coreos/etcd)
+### Examples
+Example of using snap-plugin-publisher-etcd to store metrics collected by snap-plugin-colector-psutil.
+
+Run etcd (for more info on how to run etcd see [etcd getting started](https://coreos.com/etcd/docs/latest/getting-started-with-etcd.html) and [etcd GitHub](https://github.com/coreos/etcd)):
+```
+$ etcd &
+```
+
+Ensure [Snap daemon is running](https://github.com/intelsdi-x/snap#running-snap):
+```
+$ snapteld -l -t 0 &
+```
+Download and load Snap plugins:
+```
+$ snaptel plugin load snap-plugin-collector-psutil
+$ snaptel plugin load snap-plugin-publisher-etcd
+```
+Create a task:
+```
+$ snaptel task create -t psutil-etcd.yml
+Using task manifest to create task
+Task created
+ID: 3b2bc29c-8256-4ca0-a958-05f5d41f6f11
+Name: Task-3b2bc29c-8256-4ca0-a958-05f5d41f6f11
+State: Running
+```
+You may view example tasks [here](https://github.com/intelsdi-x/snap-plugin-publisher-etcd/blob/master/examples/tasks/).
+
+Ensure the task is running and collecting metrics:
+```
+$ snaptel task watch 3b2bc29c-8256-4ca0-a958-05f5d41f6f11
+```
+Query etcd to see metrics:
+```
+$ etcdctl ls /intel/psutil --recursive
+```
+
 
 ### Roadmap
 There isn't a current roadmap for this plugin, but it is in active development. As we launch this plugin, we do not have any outstanding requirements for the next release. If you have a feature request, please add it as an [issue](https://github.com/intelsdi-x/snap-plugin-publisher-etcd/issues/new) and/or submit a [pull request](https://github.com/intelsdi-x/snap-plugin-publisher-etcd/pulls).
