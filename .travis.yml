@@ -33,9 +33,8 @@ before_deploy:
 - "./scripts/pre_deploy.sh"
 deploy:
 - provider: s3
-  access_key_id: AKIAINMB43VSSPFZISAA
-  secret_access_key:
-    secure: NSjryYJMqALgAGAnyvusH+eiiPS37DR2BGfVzsieOVv6mDGf6aSe59zKkxcfvEOdypt3TgRuhxsPyS+/7mOEUDcBh6VtyR+CIXtfVcJ/ns6CGDkgyyRt1tcU/1BtTzS2gcNNN5zMkG5GGHdZT3ZtBbEWXepuEleD423dttL5zEA90QF+pgvoWrI1hprnBCBUAVeb6DGiv2/NbTOrwh4NapBMgkOzD9hpMXD9MXKZnELnOhajGqeI8fCpMoo+qnktiUsSevVp3siSUzJvobGUXJsUpIZRa5A5kQ8vbsrXvTWSecvsWRFmgWLi9Yr9FhGS5VIrvoSQe4p2EZY3+OtGMcfuJ0tEQe3tU6gq1Unz7tE+aKScl3Cck9Ds2PfZk0AQjM4RrgLAexG+EAmLidH+NftQCE6+y8ha0usmD9iuNj/NZaakP459/OjxslYKXaf8zOenH3JLtMCbtX3YBZi3b24AqXha0T0gFGzYjni6ek4hSw6YO/18dLhZMomoVqo+RFbx+HBQ+cBNgLUiWKYGcZOQAikBt2AxeT/VfVYkMlULQuKjgLNUIbQ7egKRUeBfT0zx/1yP2w6gGCJRrz27y/NzVK3pI8AqDNw+CtpVpIseGjH4PBt7CXwM/yqnhw15kWQLM2NIplGgf+Kyq2jyQkgiBNI7iQPwfDZ7EvNRIbY=
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: snap.ci.snap-telemetry.io
   region: us-west-2
   skip_cleanup: true
@@ -47,9 +46,8 @@ deploy:
     branch: master
     condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION = "1.7.3"
 - provider: s3
-  access_key_id: AKIAINMB43VSSPFZISAA
-  secret_access_key:
-    secure: NSjryYJMqALgAGAnyvusH+eiiPS37DR2BGfVzsieOVv6mDGf6aSe59zKkxcfvEOdypt3TgRuhxsPyS+/7mOEUDcBh6VtyR+CIXtfVcJ/ns6CGDkgyyRt1tcU/1BtTzS2gcNNN5zMkG5GGHdZT3ZtBbEWXepuEleD423dttL5zEA90QF+pgvoWrI1hprnBCBUAVeb6DGiv2/NbTOrwh4NapBMgkOzD9hpMXD9MXKZnELnOhajGqeI8fCpMoo+qnktiUsSevVp3siSUzJvobGUXJsUpIZRa5A5kQ8vbsrXvTWSecvsWRFmgWLi9Yr9FhGS5VIrvoSQe4p2EZY3+OtGMcfuJ0tEQe3tU6gq1Unz7tE+aKScl3Cck9Ds2PfZk0AQjM4RrgLAexG+EAmLidH+NftQCE6+y8ha0usmD9iuNj/NZaakP459/OjxslYKXaf8zOenH3JLtMCbtX3YBZi3b24AqXha0T0gFGzYjni6ek4hSw6YO/18dLhZMomoVqo+RFbx+HBQ+cBNgLUiWKYGcZOQAikBt2AxeT/VfVYkMlULQuKjgLNUIbQ7egKRUeBfT0zx/1yP2w6gGCJRrz27y/NzVK3pI8AqDNw+CtpVpIseGjH4PBt7CXwM/yqnhw15kWQLM2NIplGgf+Kyq2jyQkgiBNI7iQPwfDZ7EvNRIbY=
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: snap.ci.snap-telemetry.io
   region: us-west-2
   skip_cleanup: true
