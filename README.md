@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/intelsdi-x/snap-plugin-publisher-etcd.svg?token=T9mMhEjMRckyN65RdWFp&branch=master)](https://travis-ci.org/intelsdi-x/snap-plugin-publisher-etcd)
+[![Build Status](https://travis-ci.org/intelsdi-x/snap-plugin-publisher-etcd.svg?branch=master)](https://travis-ci.org/intelsdi-x/snap-plugin-publisher-etcd)
 
 
 # snap publisher plugin - etcd
